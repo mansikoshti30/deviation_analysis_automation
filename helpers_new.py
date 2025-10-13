@@ -19,6 +19,8 @@ import numpy as np
 from ezdxf.math import Vec2
 from ezdxf.enums import TextEntityAlignment
 
+
+
 ## count the section lines
 def count_line_features(shapefile_path: str):
     """

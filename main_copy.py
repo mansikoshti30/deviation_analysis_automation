@@ -14,7 +14,7 @@ dtm_itr2_path = "D:/2_Analytics/6_plan_vs_actual/UTCL_data/UTCL_data/DEMs/DEM_it
 dtm_itr2_year_ip = 2025                              
 dtm_itr2_year_ip = dtm_itr2_year_ip if dtm_itr2_year_ip else "itr2"
 
-output_dir = "D:/2_Analytics/6_plan_vs_actual/8_sept_outputs_3"
+output_dir = "D:/2_Analytics/6_plan_vs_actual/13_oct_outputs_new"
 
 def get_linear_outputs(output_dir):
     shape_folder = os.path.join(output_dir, "shape_file_outputs")

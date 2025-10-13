@@ -12,7 +12,7 @@ from helpers_sectional_analysis import *
 
 ###########################################################################################
 ## output folder path
-output_dir = "D:/2_Analytics/6_plan_vs_actual/17_sep_output_1"
+output_dir = "D:/2_Analytics/6_plan_vs_actual/13_oct_output_1"
 os.makedirs(output_dir, exist_ok=True)
 
 ## actual data from site (excavation and dump)
@@ -88,7 +88,8 @@ section_lines_shp = get_section_lines(input_folder= input_folder_dwg_file,
 
 #########################################################################
 # sectional analysis 
-(done_exv, not_done_exv, unplanned_exv, done_dump, not_done_dump, unplanned_dump) = get_linear_outputs(output_dir)
+(done_exv, unplanned_exv, done_dump, unplanned_dump) = get_linear_outputs(output_dir)
+
 
 # create the separate folder for sectional analysis 
 sectional_analysis_output_path = os.path.join(output_dir,"sectional_output")
