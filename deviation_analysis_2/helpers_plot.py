@@ -63,10 +63,10 @@ def plot_planned_and_unplanned_areas_with_numbered_legend(
     ylabel: str = "Elevation (m)",
     save_path: Optional[str] = None,
     show: bool = True,
-    planned_color: str = "#2ca02c",   # green
-    unplanned_color: str = "#d62728", # red
-    planned_alpha: float = 0.18,
-    unplanned_alpha: float = 0.18,
+    planned_color: str = "#2AC92A",   # green
+    unplanned_color: str = "#D42525", # red
+    planned_alpha: float = 0.5,
+    unplanned_alpha: float = 0.5,
     legend_circle_size: float = 0.75,
     legend_handletextpad: float = 0.35,
     legend_labelspacing: float = 0.4,
@@ -74,6 +74,7 @@ def plot_planned_and_unplanned_areas_with_numbered_legend(
     legend_handlelength: float = 1.0,
     legend_columnspacing: float = 0.6,
 ) -> Tuple[plt.Figure, plt.Axes]:
+    
     """
     Plots elevation profiles (using columns 'z_itr1' and 'z_itr2') and highlights
     planned/unplanned blocks. `itr1` and `itr2` are used for label text in the legend.

@@ -86,7 +86,7 @@ def process_all_sections(
             intersecting_lines_folder = os.path.join(base_section_folder, intersecting_lines_sub)
             elevation_profile_folder = os.path.join(base_section_folder, elevation_profile_sub)
             section_data_folder = os.path.join(base_section_folder, section_data_sub)
-            dxf_output_folder = os.path.join(base_section_folder, dxf_output_sub)  # 🆕 DXF folder
+            dxf_output_folder = os.path.join(base_section_folder, dxf_output_sub)  #  DXF folder
 
             os.makedirs(intersecting_lines_folder, exist_ok=True)
             os.makedirs(elevation_profile_folder, exist_ok=True)
@@ -129,9 +129,9 @@ def process_all_sections(
                      lines_planned_and_used_dump,
                      lines_unplanned_and_used_dump) = lines_tuple
                 except Exception:
-                    print("⚠️ Couldn't unpack lines tuple from intersect result — continuing with None line_gdfs.")
+                    print(" Couldn't unpack lines tuple from intersect result — continuing with None line_gdfs.")
             else:
-                print(f"⚠️ Unexpected type from intersect_func: {type(intersect_res)}")
+                print(f" Unexpected type from intersect_func: {type(intersect_res)}")
 
             section_name_for_title = returned_section_name or section_name_from_row
 
@@ -165,7 +165,7 @@ def process_all_sections(
                 deviation_threshold=deviation_threshold,  # highlight only above threshold
             )
 
-            print(f"✅ Saved for section '{readable_section_name}':")
+            print(f" Saved for section '{readable_section_name}':")
             print(" - Shapefiles ->", intersecting_lines_folder)
             print(" - CSV ->", csv_path)
             print(" - PNG ->", save_file_path)
@@ -181,7 +181,7 @@ def process_all_sections(
             })
 
         except Exception as e:
-            print(f"❌ Error processing section {idx}: {e}")
+            print(f" Error processing section {idx}: {e}")
             traceback.print_exc()
             results.append({
                 "section_index": idx,

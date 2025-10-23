@@ -37,7 +37,7 @@ def export_elevation_profiles_to_dxf_try_8(
     offset_x: float = 0.0,
     offset_y: float = 0.0,
     # title
-    title: str | None = "Elevation Profile (m)",
+    title: str | None = "Elevation Profile",
     # columns
     chain_col: str | None = None,
     elev1_col: str | None = None,
@@ -209,10 +209,10 @@ def export_elevation_profiles_to_dxf_try_8(
     _add_profile(msp, df, chain_col, elev1_col, layer_iter1, _hex_to_rgb(iter1_color_hex))
     _add_profile(msp, df, chain_col, elev2_col, layer_iter2, _hex_to_rgb(iter2_color_hex))
 
-    # title
-    if title:
-        t = msp.add_text(title, dxfattribs={"layer": text_layer, "height": text_height})
-        t.dxf.insert = (offset_x, offset_y + text_height * 4)
+    # # title
+    # if title:
+    #     t = msp.add_text(title, dxfattribs={"layer": text_layer, "height": text_height})
+    #     t.dxf.insert = (offset_x, offset_y + text_height * 4)
 
     # keep for legend placement
     plot_x_min = plot_x_max = plot_y_min = plot_y_max = None
@@ -299,6 +299,25 @@ def export_elevation_profiles_to_dxf_try_8(
             y_label, dxfattribs={"layer": text_layer, "height": text_height, "rotation": 90},
         )
         ytxt.dxf.insert = (ox - 4 * text_height, (oy + (y1 * scale_y + offset_y)) / 2)
+    
+    # ---------- title (CENTERED above the plot)
+    if title and (plot_x_min is not None) and (plot_x_max is not None) and (plot_y_max is not None):
+        final_title = f"Elevation Profile Section {section_name.replace('_', ' ')}"
+        #final_title = f"{title} {section_name}" if section_name else title
+        cx_title = (plot_x_min + plot_x_max) / 2.0
+        ty_title = plot_y_max + 2.0 * text_height  # 2× text height gap above top
+        t = msp.add_text(
+            final_title,
+            dxfattribs={
+                "layer": text_layer,
+                "height": text_height * 1.25,  # slightly larger for emphasis
+                "halign": ezconst.CENTER,
+                "valign": ezconst.MIDDLE,
+            },
+        )
+        t.dxf.insert = (cx_title, ty_title)
+        t.dxf.align_point = (cx_title, ty_title)
+
 
     # ---------- fills + badges + collect legend items
     legend_items_planned = []   # (idx, label)
